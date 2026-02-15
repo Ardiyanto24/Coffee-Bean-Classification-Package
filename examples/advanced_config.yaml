@@ -1,0 +1,63 @@
+# Advanced Training Configuration
+# For production use with EfficientNet and advanced settings
+
+# Data Configuration
+dataset_path: "/path/to/coffee_beans_dataset"
+image_size: [300, 300]  # EfficientNetB3 optimal size
+batch_size: 16  # Smaller batch for larger images
+split_ratio: [0.8, 0.1, 0.1]
+
+# Advanced Augmentation
+augmentation_params:
+  horizontal_flip: true
+  vertical_flip: false
+  rotation_range: 0.3
+  zoom_range: 0.15
+  brightness_range: [0.7, 1.3]
+  contrast_range: [0.7, 1.3]
+  width_shift_range: 0.1
+  height_shift_range: 0.1
+
+# Model Configuration
+architecture: "efficientnet_b3"
+num_classes: 4
+input_shape: [300, 300, 3]
+weights: "imagenet"
+dropout_rate: 0.3
+freeze_backbone: true
+pooling: "avg"
+
+# Training Configuration
+epochs: 100
+learning_rate: 0.0001  # Lower LR for EfficientNet
+optimizer: "adam"
+loss: "categorical_crossentropy"
+metrics: ["accuracy", "precision", "recall"]
+seed: 42
+
+# Advanced Callbacks
+early_stopping_patience: 15
+reduce_lr_patience: 7
+reduce_lr_factor: 0.3
+checkpoint_monitor: "val_accuracy"
+checkpoint_mode: "max"
+
+callbacks:
+  early_stopping: true
+  checkpoint: true
+  reduce_lr: true
+  tensorboard: true
+  csv_logger: true
+
+# Output Configuration
+output_dir: "experiments"
+experiment_name: "efficientnet_b3_production"
+
+# Performance Optimization
+mixed_precision: true  # Enable for faster training on compatible GPUs
+cache_dir: "/tmp/coffee_cache"
+num_parallel_calls: -1  # Use AUTOTUNE
+prefetch_buffer_size: -1  # Use AUTOTUNE
+
+# Misc
+verbose: 1
