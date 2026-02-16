@@ -1,7 +1,6 @@
 """Model metadata management."""
 
 from dataclasses import dataclass, asdict
-from datetime import datetime
 from typing import Dict, Any, Optional, List
 import json
 
