@@ -4,12 +4,14 @@ import json
 import yaml
 import shutil
 from pathlib import Path
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, Union
 from datetime import datetime
 
 from .logger import get_logger
 
 logger = get_logger(__name__)
+
+yaml.add_representer(tuple, lambda dumper, data: dumper.represent_list(data))
 
 
 def ensure_dir(path: Union[str, Path]) -> Path:

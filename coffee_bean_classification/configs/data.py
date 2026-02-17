@@ -33,7 +33,7 @@ class DataConfig(BaseConfig):
     Example:
         >>> config = DataConfig(
         ...     dataset_path='/path/to/dataset',
-        ...     image_size=(224, 224),
+        ...     image_size=[224, 224],
         ...     batch_size=32,
         ...     split_ratio=(0.7, 0.15, 0.15)
         ... )

@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
 from typing import Optional, Dict, Any, List
-import pandas as pd
 
 from .metrics import MetricsCalculator
 from ..utils import get_logger, ensure_dir

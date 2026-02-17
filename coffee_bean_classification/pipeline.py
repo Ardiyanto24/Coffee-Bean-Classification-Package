@@ -1,13 +1,11 @@
 """End-to-end pipeline integrating all components."""
 
 import tensorflow as tf
-from pathlib import Path
 from typing import Optional, Dict, Any, List
 from datetime import datetime
 
 from .configs import TrainingConfig
 from .data import CoffeeBeanDataPipeline
-from .models import ModelFactory
 from .training import ModelTrainer
 from .evaluation import ClassificationEvaluator, ModelComparator
 from .registry import ModelRegistry, ModelMetadata
