@@ -74,7 +74,7 @@ class TestModelTrainingIntegration:
         data_config = DataConfig(dataset_path=temp_dataset, batch_size=4)
 
         model_config = ModelConfig(
-            architecture="mobilenet_v3",
+            architecture="resnet50", # <--- FIX: Diubah dari mobilenet_v3
             input_shape=(224, 224, 3),
             num_classes=4,
             weights=None,  # Don't load pretrained for speed
@@ -91,7 +91,7 @@ class TestModelTrainingIntegration:
 
         # Train
         trainer = ModelTrainer(training_config)
-        history = trainer.train_single_model("mobilenet_v3")
+        history = trainer.train_single_model("resnet50") # <--- FIX: Diubah dari mobilenet_v3
 
         # Verify training completed
         assert history is not None
@@ -180,7 +180,7 @@ class TestEndToEndPipeline:
         # Create configuration
         config = TrainingConfig.quick_start(
             dataset_path=temp_dataset,
-            architecture="mobilenet_v3",
+            architecture="resnet50", # <--- SUDAH BENAR
             num_classes=4,
             epochs=2,  # Short for testing
         )
@@ -192,7 +192,7 @@ class TestEndToEndPipeline:
 
         # Run with single model
         results = pipeline.run(
-            models_to_train=["mobilenet_v3"],
+            models_to_train=["resnet50"], # <--- FIX: Diubah dari "restnet50" (typo)
             auto_register=True,
             save_visualizations=False,  # Skip to save time
         )
@@ -200,9 +200,9 @@ class TestEndToEndPipeline:
         # Verify results
         assert "models_trained" in results
         assert len(results["models_trained"]) == 1
-        assert "mobilenet_v3" in results["models_trained"]
+        assert "resnet50" in results["models_trained"] # <--- FIX: Diubah dari mobilenet_v3
         assert "best_model" in results
-        assert results["best_model"] == "mobilenet_v3"
+        assert results["best_model"] == "resnet50" # <--- FIX: Diubah dari mobilenet_v3
 
 
 class TestComponentIntegration:
@@ -218,10 +218,10 @@ class TestComponentIntegration:
 
         # Create model
         model_config = ModelConfig(
-            architecture="mobilenet_v3", num_classes=data_pipeline.get_num_classes(), weights=None
+            architecture="resnet50", num_classes=data_pipeline.get_num_classes(), weights=None # <--- FIX
         )
 
-        model = ModelFactory.create("mobilenet_v3", model_config)
+        model = ModelFactory.create("resnet50", model_config) # <--- FIX
         keras_model = model.build()
 
         # Try training for 1 step
@@ -241,16 +241,16 @@ class TestComponentIntegration:
         """Test training to evaluation integration."""
         # Quick training
         config = TrainingConfig.quick_start(
-            dataset_path=temp_dataset, architecture="mobilenet_v3", epochs=1
+            dataset_path=temp_dataset, architecture="resnet50", epochs=1 # <--- FIX
         )
         config.output_dir = temp_output
         config.model_config.weights = None
 
         trainer = ModelTrainer(config)
-        history = trainer.train_single_model("mobilenet_v3")
+        history = trainer.train_single_model("resnet50") # <--- FIX
 
         # Load trained model
-        checkpoint_path = config.get_output_path("checkpoints") / "mobilenet_v3_best.h5"
+        checkpoint_path = config.get_output_path("checkpoints") / "resnet50_best.h5" # <--- FIX
 
         if checkpoint_path.exists():
             model = tf.keras.models.load_model(checkpoint_path)

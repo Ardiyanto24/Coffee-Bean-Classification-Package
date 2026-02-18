@@ -4,7 +4,6 @@ import pytest
 import tensorflow as tf
 import tempfile
 import shutil
-from pathlib import Path
 
 from coffee_bean_classification.training import CallbackManager, ProgressCallback, ModelTrainer
 from coffee_bean_classification.configs import TrainingConfig, DataConfig, ModelConfig
@@ -140,29 +139,29 @@ class TestModelTrainer:
 
         return dataset
 
-    def test_init_with_config(self, basic_training_config):
+    def test_init_with_config(self, basic_training_config, tmp_path):
         """Test initialization with full config."""
         # Need to add data config
         data_config = DataConfig(
-            dataset_path="/tmp/dummy", batch_size=4  # Won't be used in this test
+            dataset_path=str(tmp_path), batch_size=4  # Won't be used in this test
         )
 
         model_config = ModelConfig(architecture="resnet50", num_classes=4, weights=None)
 
         config = TrainingConfig(
-            epochs=2, data_config=data_config, model_config=model_config, output_dir="/tmp/test"
+            epochs=2, data_config=data_config, model_config=model_config, output_dir=str(tmp_path / "test")
         )
 
         # This should work even without actual dataset
-        # (we won't call train methods in this test)
+        # (we won't call train methods in this test)s
         # trainer = ModelTrainer(config)
         # assert trainer.config == config
 
-    def test_get_optimizer(self, basic_training_config):
+    def test_get_optimizer(self, basic_training_config, tmp_path):
         """Test optimizer creation."""
         from coffee_bean_classification.configs import DataConfig
 
-        data_config = DataConfig(dataset_path="/tmp/dummy")
+        data_config = DataConfig(dataset_path=str(tmp_path))
         basic_training_config.data_config = data_config
 
         # Create trainer (without actually loading data)

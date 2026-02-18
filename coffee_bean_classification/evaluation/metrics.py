@@ -13,7 +13,6 @@ from sklearn.metrics import (
     balanced_accuracy_score,
 )
 from typing import Dict, Any, Optional, List
-import pandas as pd
 
 from ..utils import get_logger
 
@@ -148,31 +147,40 @@ class MetricsCalculator:
         """Calculate F1 score."""
         return float(f1_score(y_true, y_pred, average=average, zero_division=0))
 
-    def calculate_per_class_metrics(self, y_true: np.ndarray, y_pred: np.ndarray) -> pd.DataFrame:
+    def calculate_per_class_metrics(self, y_true: np.ndarray, y_pred: np.ndarray) -> Dict[str, Any]:
         """
         Calculate metrics for each class.
 
+        Args:
+            y_true: True class indices
+            y_pred: Predicted class indices
+
         Returns:
-            DataFrame with per-class metrics
+            Dictionary with per-class metrics
         """
-        precision = precision_score(y_true, y_pred, average=None, zero_division=0)
-        recall = recall_score(y_true, y_pred, average=None, zero_division=0)
-        f1 = f1_score(y_true, y_pred, average=None, zero_division=0)
+        from sklearn.metrics import precision_recall_fscore_support
+        import pandas as pd
 
-        # Count support (number of samples per class)
-        support = np.bincount(y_true, minlength=self.num_classes)
+        # Secara eksplisit paksa sklearn untuk menghitung semua label yang ada di self.num_classes
+        labels = list(range(self.num_classes))
 
+        # Calculate precision, recall, f1, support for all specific classes
+        precision, recall, f1, support = precision_recall_fscore_support(
+            y_true, y_pred, labels=labels, zero_division=0
+        )
+
+        # Create dataframe
         df = pd.DataFrame(
             {
-                "class": self.class_names,
-                "precision": precision,
-                "recall": recall,
-                "f1_score": f1,
-                "support": support,
+                'class_name': self.class_names,
+                'precision': precision,
+                'recall': recall,
+                'f1_score': f1,
+                'support': support
             }
         )
 
-        return df
+        return df.to_dict(orient='records')
 
     @staticmethod
     def calculate_top_k_accuracy(y_true: np.ndarray, y_pred_proba: np.ndarray, k: int = 2) -> float:
