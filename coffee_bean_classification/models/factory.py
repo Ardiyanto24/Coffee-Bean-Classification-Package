@@ -1,14 +1,15 @@
 """Model factory for creating different model architectures."""
 
-from typing import Dict, Type, Optional, List
+from typing import Dict, List, Optional, Type
+
 import tensorflow as tf
 
+from ..utils import ValidationError, get_logger
 from .base import BaseModel
-from .resnet import ResNet50Model
+from .densenet import DenseNet121Model
 from .efficientnet import EfficientNetB0Model, EfficientNetB3Model
 from .mobilenet import MobileNetV3Model
-from .densenet import DenseNet121Model
-from ..utils import get_logger, ValidationError
+from .resnet import ResNet50Model
 
 logger = get_logger(__name__)
 

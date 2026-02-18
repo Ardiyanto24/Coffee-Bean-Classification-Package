@@ -1,19 +1,20 @@
 """Integration tests for the complete pipeline."""
 
-import pytest
-import tensorflow as tf
-import numpy as np
-import tempfile
 import shutil
+import tempfile
 from pathlib import Path
 
-from coffee_bean_classification.pipeline import CoffeeBeanPipeline
-from coffee_bean_classification.configs import TrainingConfig, DataConfig, ModelConfig
+import numpy as np
+import pytest
+import tensorflow as tf
+
+from coffee_bean_classification.configs import DataConfig, ModelConfig, TrainingConfig
 from coffee_bean_classification.data import CoffeeBeanDataPipeline
-from coffee_bean_classification.models import ModelFactory
-from coffee_bean_classification.training import ModelTrainer
 from coffee_bean_classification.evaluation import ClassificationEvaluator
-from coffee_bean_classification.registry import ModelRegistry, ModelMetadata
+from coffee_bean_classification.models import ModelFactory
+from coffee_bean_classification.pipeline import CoffeeBeanPipeline
+from coffee_bean_classification.registry import ModelMetadata, ModelRegistry
+from coffee_bean_classification.training import ModelTrainer
 
 
 @pytest.fixture

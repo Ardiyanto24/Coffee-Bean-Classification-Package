@@ -1,11 +1,11 @@
 """Models module."""
 
 from .base import BaseModel
-from .resnet import ResNet50Model
-from .efficientnet import EfficientNetB0Model, EfficientNetB3Model
-from .mobilenet import MobileNetV3Model
 from .densenet import DenseNet121Model
+from .efficientnet import EfficientNetB0Model, EfficientNetB3Model
 from .factory import ModelFactory
+from .mobilenet import MobileNetV3Model
+from .resnet import ResNet50Model
 
 __all__ = [
     "BaseModel",

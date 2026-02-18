@@ -1,18 +1,19 @@
 """Tests for data pipeline classes."""
 
+import shutil
+import tempfile
+from pathlib import Path
+
+import numpy as np
 import pytest
 import tensorflow as tf
-import numpy as np
-from pathlib import Path
-import tempfile
-import shutil
 
+from coffee_bean_classification.configs import DataConfig
 from coffee_bean_classification.data import (
-    DataAugmentation,
     AdvancedAugmentation,
     CoffeeBeanDataPipeline,
+    DataAugmentation,
 )
-from coffee_bean_classification.configs import DataConfig
 
 
 @pytest.fixture

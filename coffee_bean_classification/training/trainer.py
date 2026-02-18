@@ -1,15 +1,16 @@
 """Model trainer for orchestrating training process."""
 
-import tensorflow as tf
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Any
-from datetime import datetime
 import json
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
 
-from .callbacks import CallbackManager, ProgressCallback
-from ..models import ModelFactory
+import tensorflow as tf
+
 from ..data import CoffeeBeanDataPipeline
-from ..utils import get_logger, set_global_seed, save_json
+from ..models import ModelFactory
+from ..utils import get_logger, save_json, set_global_seed
+from .callbacks import CallbackManager, ProgressCallback
 
 logger = get_logger(__name__)
 

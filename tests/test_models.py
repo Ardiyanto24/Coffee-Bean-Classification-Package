@@ -3,16 +3,16 @@
 import pytest
 import tensorflow as tf
 
+from coffee_bean_classification.configs import ModelConfig
 from coffee_bean_classification.models import (
-    ModelFactory,
-    ResNet50Model,
+    BaseModel,
+    DenseNet121Model,
     EfficientNetB0Model,
     EfficientNetB3Model,
     MobileNetV3Model,
-    DenseNet121Model,
-    BaseModel,
+    ModelFactory,
+    ResNet50Model,
 )
-from coffee_bean_classification.configs import ModelConfig
 from coffee_bean_classification.utils import ValidationError
 
 

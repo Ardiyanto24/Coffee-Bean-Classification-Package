@@ -1,14 +1,15 @@
 """Classification model evaluator."""
 
-import tensorflow as tf
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 from pathlib import Path
-from typing import Optional, Dict, Any, List
+from typing import Any, Dict, List, Optional
 
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+import tensorflow as tf
+
+from ..utils import ensure_dir, get_logger
 from .metrics import MetricsCalculator
-from ..utils import get_logger, ensure_dir
 
 logger = get_logger(__name__)
 
@@ -231,7 +232,7 @@ class ClassificationEvaluator:
         if self.y_pred_proba is None:
             raise ValueError("Run evaluate() first")
 
-        from sklearn.metrics import roc_curve, auc
+        from sklearn.metrics import auc, roc_curve
 
         # Convert to one-hot if needed
         if len(self.y_true.shape) == 1:

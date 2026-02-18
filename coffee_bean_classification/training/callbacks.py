@@ -1,10 +1,11 @@
 """Callback manager for training."""
 
-import tensorflow as tf
-from typing import List, Optional
 from datetime import datetime
+from typing import List, Optional
 
-from ..utils import get_logger, ensure_dir
+import tensorflow as tf
+
+from ..utils import ensure_dir, get_logger
 
 logger = get_logger(__name__)
 

@@ -1,17 +1,17 @@
 """Data configuration."""
 
 from pathlib import Path
-from typing import Optional, Tuple, Dict, Any
+from typing import Any, Dict, Optional, Tuple
 
-from .base import BaseConfig
 from ..utils import (
+    ValidationError,
+    get_logger,
+    validate_image_size,
     validate_path,
     validate_positive,
     validate_ratio,
-    validate_image_size,
-    ValidationError,
-    get_logger,
 )
+from .base import BaseConfig
 
 logger = get_logger(__name__)
 

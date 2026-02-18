@@ -1,7 +1,8 @@
 """Base model class for all neural network models."""
 
 from abc import ABC, abstractmethod
-from typing import Optional, Dict, Any, List
+from typing import Any, Dict, List, Optional
+
 import tensorflow as tf
 
 from ..utils import get_logger

@@ -1,8 +1,9 @@
 """Model comparison utilities."""
 
-import pandas as pd
+from typing import Any, Dict, List, Optional
+
 import matplotlib.pyplot as plt
-from typing import Dict, List, Optional, Any
+import pandas as pd
 
 from ..utils import get_logger, save_json
 

@@ -1,15 +1,16 @@
 """End-to-end pipeline integrating all components."""
 
-import tensorflow as tf
-from typing import Optional, Dict, Any, List
 from datetime import datetime
+from typing import Any, Dict, List, Optional
+
+import tensorflow as tf
 
 from .configs import TrainingConfig
 from .data import CoffeeBeanDataPipeline
-from .training import ModelTrainer
 from .evaluation import ClassificationEvaluator, ModelComparator
-from .registry import ModelRegistry, ModelMetadata
-from .utils import get_logger, ensure_dir, save_json
+from .registry import ModelMetadata, ModelRegistry
+from .training import ModelTrainer
+from .utils import ensure_dir, get_logger, save_json
 
 logger = get_logger(__name__)
 

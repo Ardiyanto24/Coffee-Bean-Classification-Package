@@ -1,18 +1,19 @@
 """Metrics calculation utilities."""
 
+from typing import Any, Dict, List, Optional
+
 import numpy as np
 import tensorflow as tf
 from sklearn.metrics import (
     accuracy_score,
+    balanced_accuracy_score,
+    classification_report,
+    confusion_matrix,
+    f1_score,
     precision_score,
     recall_score,
-    f1_score,
-    confusion_matrix,
-    classification_report,
     roc_auc_score,
-    balanced_accuracy_score,
 )
-from typing import Dict, Any, Optional, List
 
 from ..utils import get_logger
 
@@ -158,8 +159,8 @@ class MetricsCalculator:
         Returns:
             Dictionary with per-class metrics
         """
-        from sklearn.metrics import precision_recall_fscore_support
         import pandas as pd
+        from sklearn.metrics import precision_recall_fscore_support
 
         # Secara eksplisit paksa sklearn untuk menghitung semua label yang ada di self.num_classes
         labels = list(range(self.num_classes))

@@ -1,12 +1,13 @@
 """Tests for training system."""
 
+import shutil
+import tempfile
+
 import pytest
 import tensorflow as tf
-import tempfile
-import shutil
 
-from coffee_bean_classification.training import CallbackManager, ProgressCallback, ModelTrainer
-from coffee_bean_classification.configs import TrainingConfig, DataConfig, ModelConfig
+from coffee_bean_classification.configs import DataConfig, ModelConfig, TrainingConfig
+from coffee_bean_classification.training import CallbackManager, ModelTrainer, ProgressCallback
 
 
 @pytest.fixture

@@ -1,7 +1,7 @@
 """Evaluation and model comparison module."""
 
-from .evaluator import ClassificationEvaluator
 from .comparator import ModelComparator
+from .evaluator import ClassificationEvaluator
 
 __all__ = [
     "ClassificationEvaluator",

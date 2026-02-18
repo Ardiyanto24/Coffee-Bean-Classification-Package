@@ -1,7 +1,8 @@
 """Validation utilities for configurations and inputs."""
 
 from pathlib import Path
-from typing import Any, List, Optional, Union, Tuple
+from typing import Any, List, Optional, Tuple, Union
+
 import numpy as np
 
 from .logger import get_logger

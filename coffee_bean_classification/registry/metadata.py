@@ -1,8 +1,8 @@
 """Model metadata management."""
 
-from dataclasses import dataclass, asdict
-from typing import Dict, Any, Optional, List
 import json
+from dataclasses import asdict, dataclass
+from typing import Any, Dict, List, Optional
 
 
 @dataclass

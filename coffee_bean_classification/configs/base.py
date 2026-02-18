@@ -1,11 +1,11 @@
 """Base configuration class for all configurations."""
 
+import copy
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Any, Dict, Union
-import copy
 
-from ..utils import save_json, load_json, save_yaml, load_yaml, get_logger
+from ..utils import get_logger, load_json, load_yaml, save_json, save_yaml
 
 logger = get_logger(__name__)
 

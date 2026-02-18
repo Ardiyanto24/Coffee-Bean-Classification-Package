@@ -1,13 +1,14 @@
 """Model registry for version control and management."""
 
-import tensorflow as tf
-from pathlib import Path
-from typing import Dict, Optional, List
 import json
 from datetime import datetime
+from pathlib import Path
+from typing import Dict, List, Optional
 
+import tensorflow as tf
+
+from ..utils import ensure_dir, get_logger, load_json, save_json
 from .metadata import ModelMetadata
-from ..utils import get_logger, ensure_dir, save_json, load_json
 
 logger = get_logger(__name__)
 

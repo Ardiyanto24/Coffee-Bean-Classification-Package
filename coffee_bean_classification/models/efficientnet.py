@@ -1,10 +1,11 @@
 """EfficientNet model implementations."""
 
-import tensorflow as tf
 from typing import Optional
 
-from .base import BaseModel
+import tensorflow as tf
+
 from ..utils import get_logger
+from .base import BaseModel
 
 logger = get_logger(__name__)
 

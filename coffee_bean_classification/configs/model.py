@@ -1,9 +1,9 @@
 """Model configuration."""
 
-from typing import Optional, Tuple, List
+from typing import List, Optional, Tuple
 
+from ..utils import ValidationError, get_logger, validate_choice, validate_positive, validate_range
 from .base import BaseConfig
-from ..utils import validate_choice, validate_positive, validate_range, ValidationError, get_logger
 
 logger = get_logger(__name__)
 

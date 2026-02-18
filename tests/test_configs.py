@@ -1,8 +1,9 @@
 """Tests for configuration classes."""
 
-import pytest
 import tempfile
 from pathlib import Path
+
+import pytest
 
 from coffee_bean_classification.configs import DataConfig, ModelConfig, TrainingConfig
 from coffee_bean_classification.utils import ValidationError
