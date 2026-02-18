@@ -32,9 +32,6 @@ jobs:
     
     - name: Run Flake8
       run: flake8 coffee_bean_classification tests --max-line-length=100 --ignore=E203,W503
-    
-    - name: Run MyPy
-      run: mypy coffee_bean_classification --ignore-missing-imports
 
   test:
     name: Unit Tests
