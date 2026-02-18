@@ -6,10 +6,11 @@ and utilities from Phase 2.
 """
 
 from pathlib import Path
+
 from coffee_bean_classification.configs import DataConfig, ModelConfig, TrainingConfig
 from coffee_bean_classification.utils import (
-    set_global_seed,
     FileManager,
+    set_global_seed,
     setup_logger,
     verify_reproducibility,
 )

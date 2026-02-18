@@ -37,7 +37,7 @@ License: MIT
 Version: 0.1.0
 """
 
-from .version import __version__, __author__, __description__
+from .version import __author__, __description__, __version__
 
 # Core imports will be added as we implement each component
 # from .configs import TrainingConfig, DataConfig, ModelConfig

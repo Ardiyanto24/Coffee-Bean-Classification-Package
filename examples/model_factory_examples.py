@@ -127,6 +127,7 @@ def example_5_custom_model_registration():
 
     # Define custom model
     import tensorflow as tf
+
     from coffee_bean_classification.models import BaseModel
 
     @ModelFactory.register("simple_cnn")
