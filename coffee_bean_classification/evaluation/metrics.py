@@ -172,15 +172,15 @@ class MetricsCalculator:
         # Create dataframe
         df = pd.DataFrame(
             {
-                'class_name': self.class_names,
-                'precision': precision,
-                'recall': recall,
-                'f1_score': f1,
-                'support': support
+                "class_name": self.class_names,
+                "precision": precision,
+                "recall": recall,
+                "f1_score": f1,
+                "support": support,
             }
         )
 
-        return df.to_dict(orient='records')
+        return df.to_dict(orient="records")
 
     @staticmethod
     def calculate_top_k_accuracy(y_true: np.ndarray, y_pred_proba: np.ndarray, k: int = 2) -> float:

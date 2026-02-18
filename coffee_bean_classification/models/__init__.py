@@ -8,11 +8,11 @@ from .densenet import DenseNet121Model
 from .factory import ModelFactory
 
 __all__ = [
-    'BaseModel',
-    'ResNet50Model',
-    'EfficientNetB0Model',
-    'EfficientNetB3Model',
-    'MobileNetV3Model',
-    'DenseNet121Model',
-    'ModelFactory',
+    "BaseModel",
+    "ResNet50Model",
+    "EfficientNetB0Model",
+    "EfficientNetB3Model",
+    "MobileNetV3Model",
+    "DenseNet121Model",
+    "ModelFactory",
 ]

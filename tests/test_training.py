@@ -149,9 +149,10 @@ class TestModelTrainer:
         model_config = ModelConfig(architecture="resnet50", num_classes=4, weights=None)
 
         config = TrainingConfig(
-            epochs=2, data_config=data_config,
+            epochs=2,
+            data_config=data_config,
             model_config=model_config,
-            output_dir=str(tmp_path / "test")
+            output_dir=str(tmp_path / "test"),
         )
 
         trainer = ModelTrainer(config)

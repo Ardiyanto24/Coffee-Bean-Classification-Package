@@ -4,6 +4,6 @@ from .evaluator import ClassificationEvaluator
 from .comparator import ModelComparator
 
 __all__ = [
-    'ClassificationEvaluator',
-    'ModelComparator',
+    "ClassificationEvaluator",
+    "ModelComparator",
 ]
