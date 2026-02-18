@@ -1,6 +1,5 @@
 """Tests for configuration classes."""
 
-
 import pytest
 
 from coffee_bean_classification.configs import DataConfig, ModelConfig, TrainingConfig
