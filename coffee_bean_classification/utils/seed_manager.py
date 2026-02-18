@@ -4,7 +4,6 @@ import os
 import random
 import numpy as np
 import tensorflow as tf
-from typing import Optional
 
 from .logger import get_logger
 

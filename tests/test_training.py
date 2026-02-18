@@ -149,13 +149,13 @@ class TestModelTrainer:
         model_config = ModelConfig(architecture="resnet50", num_classes=4, weights=None)
 
         config = TrainingConfig(
-            epochs=2, data_config=data_config, model_config=model_config, output_dir=str(tmp_path / "test")
+            epochs=2, data_config=data_config,
+            model_config=model_config,
+            output_dir=str(tmp_path / "test")
         )
 
-        # This should work even without actual dataset
-        # (we won't call train methods in this test)s
-        # trainer = ModelTrainer(config)
-        # assert trainer.config == config
+        trainer = ModelTrainer(config)
+        assert trainer.config == config
 
     def test_get_optimizer(self, basic_training_config, tmp_path):
         """Test optimizer creation."""
@@ -209,7 +209,5 @@ class TestTrainingIntegration:
         try:
             history = model.fit(x, y, epochs=1, callbacks=callbacks, verbose=0)
             assert history is not None
-        except Exception as e:
-            # Some callbacks might fail in test environment
-            # That's okay, we're just testing they can be created
+        except Exception:
             pass
