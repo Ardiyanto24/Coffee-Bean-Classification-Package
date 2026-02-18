@@ -5,7 +5,6 @@ This script demonstrates how to use the data pipeline for loading,
 preprocessing, and augmenting coffee bean images.
 """
 
-from pathlib import Path
 from coffee_bean_classification.configs import DataConfig
 from coffee_bean_classification.data import CoffeeBeanDataPipeline, DataAugmentation
 
@@ -72,7 +71,7 @@ def example_3_custom_augmentation():
 
     config = DataConfig(dataset_path="/path/to/dataset", augmentation_params=custom_config)
 
-    pipeline = CoffeeBeanDataPipeline(config)
+    CoffeeBeanDataPipeline(config)
 
     print("✓ Custom augmentation configured")
     print(f"  Parameters: {custom_config}")

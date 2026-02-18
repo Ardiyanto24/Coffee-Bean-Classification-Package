@@ -1,7 +1,5 @@
 """Tests for configuration classes."""
 
-import tempfile
-from pathlib import Path
 
 import pytest
 
@@ -39,7 +37,7 @@ class TestDataConfig:
     def test_validation_success(self, tmp_path):
         """Test successful validation."""
         config = DataConfig(dataset_path=str(tmp_path))
-        assert config.validate() == True
+        assert config.validate()
 
     def test_validation_invalid_ratio(self, tmp_path):
         """Test validation with invalid split ratio."""
@@ -102,7 +100,7 @@ class TestModelConfig:
     def test_validation_success(self):
         """Test successful validation."""
         config = ModelConfig(architecture="resnet50")
-        assert config.validate() == True
+        assert config.validate()
 
     def test_validation_invalid_architecture(self):
         """Test validation with invalid architecture."""
@@ -131,10 +129,10 @@ class TestModelConfig:
     def test_is_transfer_learning(self):
         """Test is_transfer_learning method."""
         config1 = ModelConfig(architecture="resnet50", weights="imagenet")
-        assert config1.is_transfer_learning() == True
+        assert config1.is_transfer_learning()
 
         config2 = ModelConfig(architecture="resnet50", weights=None)
-        assert config2.is_transfer_learning() == False
+        assert not config2.is_transfer_learning()
 
 
 class TestTrainingConfig:
@@ -159,7 +157,7 @@ class TestTrainingConfig:
     def test_validation_success(self):
         """Test successful validation."""
         config = TrainingConfig()
-        assert config.validate() == True
+        assert config.validate()
 
     def test_validation_invalid_epochs(self):
         """Test validation with invalid epochs."""
@@ -182,7 +180,7 @@ class TestTrainingConfig:
 
         assert training_config.data_config is not None
         assert training_config.model_config is not None
-        assert training_config.validate() == True
+        assert training_config.validate()
 
     def test_quick_start(self, tmp_path):
         """Test quick_start factory method."""
@@ -216,7 +214,7 @@ class TestTrainingConfig:
         config = TrainingConfig()
 
         config.disable_callback("early_stopping")
-        assert config.callbacks["early_stopping"] == False
+        assert not config.callbacks["early_stopping"]
 
         config.enable_callback("early_stopping")
-        assert config.callbacks["early_stopping"] == True
+        assert config.callbacks["early_stopping"]

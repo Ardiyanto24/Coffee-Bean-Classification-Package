@@ -250,7 +250,7 @@ class TestComponentIntegration:
         config.model_config.weights = None
 
         trainer = ModelTrainer(config)
-        history = trainer.train_single_model("resnet50")  # <--- FIX
+        trainer.train_single_model("resnet50")  # <--- FIX
 
         # Load trained model
         checkpoint_path = config.get_output_path("checkpoints") / "resnet50_best.h5"  # <--- FIX

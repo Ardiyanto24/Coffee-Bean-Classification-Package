@@ -1,6 +1,6 @@
 """Model factory for creating different model architectures."""
 
-from typing import Dict, List, Optional, Type
+from typing import Dict, List, Type
 
 import tensorflow as tf
 

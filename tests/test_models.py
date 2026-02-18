@@ -90,7 +90,7 @@ class TestModelFactory:
         model2 = ModelFactory.create("RESNET50", basic_config)
         model3 = ModelFactory.create("resnet50", basic_config)
 
-        assert type(model1) == type(model2) == type(model3)
+        assert type(model1) is type(model2) is type(model3)
 
     def test_register_custom_model(self, basic_config):
         """Test registering a custom model."""
@@ -124,8 +124,8 @@ class TestModelFactory:
 
     def test_is_registered(self):
         """Test checking if model is registered."""
-        assert ModelFactory.is_registered("resnet50") == True
-        assert ModelFactory.is_registered("invalid_model") == False
+        assert ModelFactory.is_registered("resnet50")
+        assert not ModelFactory.is_registered("invalid_model")
 
     def test_compare_models(self):
         """Test model comparison."""
@@ -184,11 +184,11 @@ class TestResNet50Model:
 
         # Unfreeze
         model.unfreeze_backbone()
-        assert model.backbone.trainable == True
+        assert model.backbone.trainable
 
         # Freeze
         model.freeze_backbone()
-        assert model.backbone.trainable == False
+        assert not model.backbone.trainable
 
 
 class TestEfficientNetModels:
@@ -275,7 +275,7 @@ class TestDenseNet121Model:
         # Check that BN layers are frozen
         for layer in model.model.layers:
             if isinstance(layer, tf.keras.layers.BatchNormalization):
-                assert layer.trainable == False
+                assert not layer.trainable
 
 
 class TestModelIntegration:
@@ -313,5 +313,5 @@ class TestModelIntegration:
         model = ModelFactory.create("resnet50", basic_config)
         model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
 
-        assert model._compiled == True
+        assert model._compiled
         assert model.model is not None

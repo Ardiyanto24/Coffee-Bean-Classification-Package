@@ -1,8 +1,6 @@
 """Model trainer for orchestrating training process."""
 
-import json
 from datetime import datetime
-from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import tensorflow as tf
@@ -88,9 +86,9 @@ class ModelTrainer:
             >>> history = trainer.train_single_model('resnet50')
             >>> print(f"Best accuracy: {max(history.history['val_accuracy'])}")
         """
-        logger.info(f"=" * 60)
+        logger.info("=" * 60)
         logger.info(f"Training {model_name}")
-        logger.info(f"=" * 60)
+        logger.info("=" * 60)
 
         # Load datasets if needed
         train_ds, val_ds, test_ds = self.data_pipeline.get_datasets(load_if_needed=True)
@@ -156,7 +154,7 @@ class ModelTrainer:
         }
 
         logger.info(f"✓ Training completed for {model_name}")
-        logger.info(f"=" * 60)
+        logger.info("=" * 60)
 
         return history
 

@@ -4,6 +4,7 @@ from typing import Any, Dict, List, Optional
 
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 
 from ..utils import get_logger, save_json
 
@@ -221,6 +222,3 @@ class ModelComparator:
             ranked.to_csv(save_path)
 
         logger.info(f"Exported leaderboard to {save_path}")
-
-
-import numpy as np  # Need this for radar chart

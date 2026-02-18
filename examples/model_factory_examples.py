@@ -49,7 +49,7 @@ def example_2_all_architectures():
     for model_name in available:
         config = ModelConfig.for_architecture(model_name, num_classes=4)
         model = ModelFactory.create(model_name, config)
-        keras_model = model.build()
+        model.build()
         params = model.count_parameters()
 
         print(f"✓ {model_name.upper()}:")
@@ -77,11 +77,11 @@ def example_3_transfer_learning():
 
     # Create and build model
     model = ModelFactory.create("efficientnet_b0", config)
-    keras_model = model.build()
+    model.build()
 
     params = model.count_parameters()
     print("Transfer Learning Setup:")
-    print(f"✓ Using ImageNet pretrained weights")
+    print("✓ Using ImageNet pretrained weights")
     print(f"✓ Backbone frozen: {not model.backbone.trainable}")
     print(f"✓ Total params: {params['total']:,}")
     print(f"✓ Trainable params: {params['trainable']:,}")

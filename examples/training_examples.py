@@ -26,7 +26,7 @@ def example_1_basic_training():
     # Train single model
     history = trainer.train_single_model("resnet50")
 
-    print(f"✓ Training completed")
+    print("✓ Training completed")
     print(f"✓ Final accuracy: {history.history['accuracy'][-1]:.4f}")
     print(f"✓ Best val accuracy: {max(history.history['val_accuracy']):.4f}")
     print()
@@ -88,7 +88,7 @@ def example_3_custom_callbacks():
     custom_callback = tf.keras.callbacks.LambdaCallback(on_epoch_end=on_epoch_end)
 
     trainer = ModelTrainer(config)
-    history = trainer.train_single_model("mobilenet_v3", custom_callbacks=[custom_callback])
+    trainer.train_single_model("mobilenet_v3", custom_callbacks=[custom_callback])
 
     print("✓ Training with custom callback completed")
     print()
@@ -114,7 +114,7 @@ def example_4_resume_training():
     print("\nResuming training...")
     model_path = config.get_output_path("checkpoints") / "efficientnet_b0_best.h5"
 
-    history = trainer.resume_training(
+    trainer.resume_training(
         model_path=str(model_path), additional_epochs=10, model_name="efficientnet_b0_resumed"
     )
 
@@ -171,7 +171,7 @@ def example_5_custom_configuration():
     training_config.enable_callback("tensorboard")
 
     trainer = ModelTrainer(training_config)
-    history = trainer.train_single_model("densenet121")
+    trainer.train_single_model("densenet121")
 
     print("✓ Custom configuration training completed")
     print()
@@ -195,7 +195,7 @@ def example_6_learning_rate_scheduling():
     )
 
     # Train with LR scheduler
-    history = trainer.train_single_model("resnet50", custom_callbacks=[lr_scheduler])
+    trainer.train_single_model("resnet50", custom_callbacks=[lr_scheduler])
 
     print("✓ Training with LR scheduling completed")
     print()

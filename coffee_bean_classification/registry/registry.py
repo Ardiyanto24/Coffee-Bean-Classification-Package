@@ -1,9 +1,7 @@
 """Model registry for version control and management."""
 
-import json
-from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import List
 
 import tensorflow as tf
 

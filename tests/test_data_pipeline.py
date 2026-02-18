@@ -261,7 +261,7 @@ class TestCoffeeBeanDataPipeline:
 
         # Augmentation should be applied to training set
         assert pipeline.augmentation is not None
-        assert pipeline.augmentation.config["horizontal_flip"] == True
+        assert pipeline.augmentation.config["horizontal_flip"]
 
     def test_repr(self, temp_dataset):
         """Test string representation."""
